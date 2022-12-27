@@ -8,16 +8,10 @@
 #pragma once
 
 #include <iostream>
+#include <nlohmann/json.hpp>
 
-/* model for the main weather that is returned from the API
- * call to OpenWeather endpoint */
-struct Weather {
-    std::string main;
-    std::string description;
-
-
-};
-
+// TODO: need to write the Weather struct and how it will be instantiated
+// TODO: need to write the actual method that will make the API call
 
 /* main weather model class
  *      - this is where processing of data will occur
@@ -26,20 +20,36 @@ struct Weather {
 class WeatherModel {
 
 private:
-    std::string city;
-    std::string country;
-    float temperature;
-    float feelsLike;
+    /* the main weather data model that is returned from OpenWeather */
+    struct Weather {
+        std::string main; /* main title for the weather */
+        std::string description; /* short description of the current weather */
+        float temperature;
+        float feelsLike;
 
+        explicit Weather(std::string _main, std::string _description, float _temp, float _feelsLike) :
+                            main{_main}, description{_description}, temperature{_temp}, feelsLike{_feelsLike} {};
+    };
+
+    mutable std::string city;
+    mutable std::string country;
+    Weather weather;
 
 public:
 
     explicit WeatherModel();
     ~WeatherModel() = default;
 
+    /* make the api request and fill out the properties of Weather */
+    void fetchWeatherData();
+
     /* getters and setters */
-    std::string& getCity() { return this->city; };
-    std::string& getCountry() { return this->country; };
+    const Weather& getWeather() { return this->weather; };
+    std::string& getCity() const { return this->city; };
+    std::string& getCountry() const { return this->country; };
+
+
+
 
 };
 

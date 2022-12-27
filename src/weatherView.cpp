@@ -117,9 +117,9 @@ void WeatherView::displaySnowStorm() {
 |                          ',
  \                         .'
    ~- ._ ,. ,.,.,., ,.. -~
-    * .  .  *    .  *   *  .
-   .  *   .  * *  .    .  *
-     *  .  *  ..  .  *   * . *
+    * .  *.  *    .  *   *  .
+   .  *  * .  * *  .  *  .  *
+     *  .  *  .. * .  *   * . *
    * *  . *  * .   *  .  . *
     )";
     std::cout << snowstormArt << std::endl;
