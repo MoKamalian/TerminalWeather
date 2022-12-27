@@ -1,0 +1,8 @@
+cmake-build-debug/
+
+static_lib/
+
+CMakeLists.txt
+
+# ignore CLion idea directory
+.idea/
