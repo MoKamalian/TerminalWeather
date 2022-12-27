@@ -1,0 +1,19 @@
+
+List of requirements:
+
+    1. Program will take in the name of a city and the weather forcast for the day will
+       be outputted.
+
+    2. If the city does not exist, the program will prompt the user to re-enter the name
+       of the city properly.
+
+    3. the user can also choose to enter in the city name OR user coordinates to determine
+       the location.
+
+    4. The program will display ASCII art that corresponds to the type of weather outputted
+
+    5. the program will ask the user if they wish to have results displayed in imperial
+       or metric units
+
+
+
