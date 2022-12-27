@@ -29,7 +29,7 @@ int main() {
         Easy myRequest;
 
         Options::WriteStream ws(&os);
-        myRequest.setOpt<options::Url>("https://api.openweathermap.org/data/2.5/weather?q=Halifax&appid=73c88b0be993f33a9f963a3c88c1c3ee");
+        myRequest.setOpt<options::Url>("https://api.openweathermap.org/data/2.5/weather?q=Halifax&appid={API_KEY}");
         myRequest.setOpt(ws);
         myRequest.perform();
 
