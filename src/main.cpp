@@ -19,6 +19,7 @@ int main() {
 
     WeatherModel model;
     model.fetchWeatherData();
+    cout << model.getWeather().getMain() << endl;
 
     return 0;
 }
@@ -29,3 +30,6 @@ int main() {
     // TODO: methods needed to process the data received from the API call
     // TODO: methods also need to actually make those API calls
     // TODO: the actual weather object will be instantiated inside the fetch method call
+    // TODO: should change the URL so the city name is not hard coded
+    // TODO: initialize the weather member variable with the correct weather data belozw
+

@@ -27,9 +27,12 @@ void WeatherModel::fetchWeatherData() {
         /* actual parsing of the json response; the data is extracted via
          * os.str() method call and passed to json::parse() to perform the parsing action */
         response = json::parse(os.str());
-        std::cout << response["main"] << std::endl; /* for testing only; should be removed */
 
-        // TODO: initialize the weather member variable with the correct weather data below
+        /* Here, the actual weather object is initialized with the relevant weather data */
+        this->weather = Weather(response["weather"]["main"], response["weather"]["description"], response["main"]["pressure"],
+                      response["main"]["humidity"], response["main"]["temp"], response["main"]["feels_like"]);
+
+
     } catch(RuntimeError& re) {
         std::cout << re.what() << std::endl;
     } catch(LogicError& le) {

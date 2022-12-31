@@ -15,9 +15,8 @@
 
 /* this is the API key that will be used to make the requests;
  * replace with your specific key */
-#define MY_API_KEY "{YOUR_API}"
-// TODO: below url is for testing only since city is hardcoded; should change so it is not hardcoded
-#define MY_URL "https://api.openweathermap.org/data/2.5/weather?q=London&appid="
+#define MY_API_KEY "{YOUR_API_KEY}"
+#define MY_URL "https://api.openweathermap.org/data/2.5/weather?q=Boston&appid="
 
 /* main weather model class
  *      - this is where processing of data will occur
@@ -45,17 +44,20 @@ private:
                             pressure{_pres}, humidity{_hum} {};
 
         /* getters */
-        std::string getMain() { return this->main; };
-        std::string getDescription() { return this->description; };
-        float getPressure() { return this->pressure; };
-        float getHumidity() { return this->humidity; };
-        float getTemp() { return this->temperature; };
-        float getFeelsLike() { return this->feelsLike; };
+        std::string getMain() const { return this->main; };
+        std::string getDescription() const { return this->description; };
+        float getPressure() const { return this->pressure; };
+        float getHumidity() const { return this->humidity; };
+        float getTemp() const { return this->temperature; };
+        float getFeelsLike() const { return this->feelsLike; };
 
     };
 
-    mutable std::string city;
-    mutable std::string country;
+    /* default values will be null for the city and country names;
+     * these member variables should be set first before usage via
+     * their respective setters */
+    mutable std::string city = "null";
+    mutable std::string country = "null";
     Weather weather;
 
 public:
@@ -70,7 +72,8 @@ public:
     const Weather& getWeather() { return this->weather; };
     std::string& getCity() const { return this->city; };
     std::string& getCountry() const { return this->country; };
-
+    void setCity(std::string _cityName) { this->city = std::move(_cityName); };
+    void setCountry(std::string _country) { this->country = std::move(_country); };
 
 };
 
