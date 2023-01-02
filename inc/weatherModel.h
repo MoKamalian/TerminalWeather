@@ -17,11 +17,11 @@
  * replace with your specific key */
 #define MY_API_KEY "{YOUR_API_KEY}"
 #define MY_URL "https://api.openweathermap.org/data/2.5/weather?q=Boston&appid="
-
+#define KELVIN_CONST 273.15
 /* main weather model class
  *      - this is where processing of data will occur
- *      - API calls also occur here
- *      - the structs match the JSON response from OpenWeather */
+ *      - API calls are made here
+ *      - the Weather struct will contain the information received from OpenWeather */
 class WeatherModel {
 
 private:
@@ -48,14 +48,18 @@ private:
         std::string getDescription() const { return this->description; };
         float getPressure() const { return this->pressure; };
         float getHumidity() const { return this->humidity; };
-        float getTemp() const { return this->temperature; };
-        float getFeelsLike() const { return this->feelsLike; };
+        float getTemp() const { return tempConvert(this->temperature); };
+        float getFeelsLike() const { return tempConvert(this->feelsLike); };
+
+        /* temperature converter to Celsius */
+        static float tempConvert(float t) {
+            return (float) (t - KELVIN_CONST);
+        };
 
     };
 
     /* default values will be null for the city and country names;
-     * these member variables should be set first before usage via
-     * their respective setters */
+     * these member variables are set when fetchWeatherData is called */
     mutable std::string city = "null";
     mutable std::string country = "null";
     Weather weather;
@@ -72,8 +76,8 @@ public:
     const Weather& getWeather() { return this->weather; };
     std::string& getCity() const { return this->city; };
     std::string& getCountry() const { return this->country; };
-    void setCity(std::string _cityName) { this->city = std::move(_cityName); };
-    void setCountry(std::string _country) { this->country = std::move(_country); };
 
 };
+
+
 

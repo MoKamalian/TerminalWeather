@@ -20,6 +20,15 @@ int main() {
     WeatherModel model;
     model.fetchWeatherData();
     cout << model.getWeather().getMain() << endl;
+    cout << model.getWeather().getDescription() << endl;
+    cout << model.getWeather().getFeelsLike() << endl;
+    cout << model.getWeather().getTemp() << endl;
+    cout << model.getWeather().getHumidity() << endl;
+    cout << model.getWeather().getPressure() << endl;
+
+
+    cout << model.getCity() << endl;
+    cout << model.getCountry() << endl;
 
     return 0;
 }

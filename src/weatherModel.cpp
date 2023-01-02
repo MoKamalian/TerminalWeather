@@ -29,14 +29,21 @@ void WeatherModel::fetchWeatherData() {
         response = json::parse(os.str());
 
         /* Here, the actual weather object is initialized with the relevant weather data */
-        this->weather = Weather(response["weather"]["main"], response["weather"]["description"], response["main"]["pressure"],
+        this->weather = Weather(response["weather"][0]["main"], response["weather"][0]["description"], response["main"]["pressure"],
                       response["main"]["humidity"], response["main"]["temp"], response["main"]["feels_like"]);
 
+        /* setting city and country */
+        this->city = response["name"];
+        this->country = response["sys"]["country"];
 
     } catch(RuntimeError& re) {
         std::cout << re.what() << std::endl;
     } catch(LogicError& le) {
         std::cout << le.what() << std::endl;
+    } catch(json_abi_v3_11_2::detail::type_error& te) {
+        /* error called when OpenWeather returns city not found error
+         * i.e. response values become null */
+        std::cout << te.what() << std::endl;
     }
 
 };
