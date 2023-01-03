@@ -10,7 +10,7 @@
 
 /* below method will validate if the city name only contains characters
  * and no symbols or numbers */
-bool WeatherController::validateCity(std::string& city) {
+bool WeatherController::validateCityName(std::string& city) {
     for(char c : city) {
         if(charCheck(c)) {
             continue;
@@ -29,6 +29,27 @@ bool WeatherController::charCheck(char c) {
     } else {
         return true;
     }
+};
+
+/* retrieves the weather for the specified city; will reprompt
+ * user to re-enter city if error condition is raised (i.e. city
+ * does not exist) */
+void WeatherController::retrieveWeatherForCity() {
+
+    bool validRetrieval = false;
+    while(!validRetrieval) {
+        /* first check if the city name has no numbers/special characters */
+        std::string city = WeatherView::displayPrompts();
+        /* fetch the actual data and if the result is null (meaning
+         * city does not exist), re-prompt for entering the city again */
+        city = std::regex_replace(city, std::regex(" "), "%20");
+        if(WeatherController::model.fetchWeatherData(city)) {
+            validRetrieval = true;
+        } else {
+            std::cout << "The city you have entered does not exist; please try again.. " << std::endl;
+        }
+    }
+
 };
 
 /* below method formats data properly to be sent off to

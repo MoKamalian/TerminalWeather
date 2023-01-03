@@ -7,7 +7,7 @@
 
 
 /* main method call that will retrieve the weather data from OpenWeather */
-bool WeatherModel::fetchWeatherData() {
+bool WeatherModel::fetchWeatherData(std::string& _city) {
     /* make the API call: here, replace {API} with the API key from OpenWeather */
     using namespace std;
     using namespace curlpp;
@@ -21,7 +21,7 @@ bool WeatherModel::fetchWeatherData() {
         Easy myRequest;
         /* os is the object the data response will be sent to */
         Options::WriteStream ws(&os);
-        myRequest.setOpt<options::Url>(MY_URL MY_API_KEY);
+        myRequest.setOpt<options::Url>(MY_URL(_city));
         myRequest.setOpt(ws);
         myRequest.perform();
         /* actual parsing of the json response; the data is extracted via

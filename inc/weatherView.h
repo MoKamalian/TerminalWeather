@@ -12,6 +12,7 @@
 #pragma once
 
 #include <iostream>
+#include "weatherController.h"
 
 /* The below class is used to display the ASCII art corresponding to
  * the type of weather.  This class is meant for UI/ASCII art display
@@ -19,8 +20,9 @@
 class WeatherView {
 
 public:
-    /* displays the weather information to the user */
+    /* displays the weather information to the user, prompts for gathering input */
     static void displayWeather(const std::string& w);
+    static std::string displayPrompts();
 
     /* methods for displaying UI ASCII art of depending on the weather */
     static void displaySun();

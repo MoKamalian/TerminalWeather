@@ -12,6 +12,26 @@ void WeatherView::displayWeather(const std::string& w) {
     std::cout << w << std::endl;
 };
 
+/* displays the prompts to the user asking them
+ * to enter the city name; controller validates city name */
+std::string WeatherView::displayPrompts() {
+    std::string cityName;
+    std::cout << "Please enter the city name: ";
+    std::getline(std::cin >> std::ws, cityName);
+
+    bool isValid = false;
+    while(!isValid) {
+        if (WeatherController::validateCityName(cityName)) {
+            isValid = true;
+        } else {
+            std::cout << "Please enter a VALID city name: ";
+            std::getline(std::cin >> std::ws, cityName);
+        }
+    }
+
+    return cityName;
+};
+
 /* displays sun ASCII art, example for sunny weather */
 void WeatherView::displaySun() {
     const char* sunArt = R"(
