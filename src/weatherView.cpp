@@ -7,6 +7,11 @@
 
 #include "../inc/weatherView.h"
 
+/* displays the actual weather information */
+void WeatherView::displayWeather(const std::string& w) {
+    std::cout << w << std::endl;
+};
+
 /* displays sun ASCII art, example for sunny weather */
 void WeatherView::displaySun() {
     const char* sunArt = R"(
@@ -124,4 +129,6 @@ void WeatherView::displaySnowStorm() {
     )";
     std::cout << snowstormArt << std::endl;
 };
+
+
 

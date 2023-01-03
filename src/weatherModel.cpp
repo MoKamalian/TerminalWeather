@@ -7,7 +7,7 @@
 
 
 /* main method call that will retrieve the weather data from OpenWeather */
-void WeatherModel::fetchWeatherData() {
+bool WeatherModel::fetchWeatherData() {
     /* make the API call: here, replace {API} with the API key from OpenWeather */
     using namespace std;
     using namespace curlpp;
@@ -36,14 +36,19 @@ void WeatherModel::fetchWeatherData() {
         this->city = response["name"];
         this->country = response["sys"]["country"];
 
+        return true;
+
     } catch(RuntimeError& re) {
-        std::cout << re.what() << std::endl;
+        //std::cout << re.what() << std::endl;
+        return false;
     } catch(LogicError& le) {
-        std::cout << le.what() << std::endl;
+        //std::cout << le.what() << std::endl;
+        return false;
     } catch(json_abi_v3_11_2::detail::type_error& te) {
         /* error called when OpenWeather returns city not found error
          * i.e. response values become null */
-        std::cout << te.what() << std::endl;
+        //std::cout << te.what() << std::endl;
+        return false;
     }
 
 };

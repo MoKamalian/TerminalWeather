@@ -69,8 +69,10 @@ public:
     WeatherModel(const WeatherModel&) = delete;
     ~WeatherModel() = default;
 
-    /* make the api request and fill out the properties of Weather */
-    void fetchWeatherData();
+    /* make the api request and fill out the properties of Weather
+     * returns true if the data retrieval and parsing was successful; false
+     * if error conditions are raised */
+    bool fetchWeatherData();
 
     /* getters and setters */
     const Weather& getWeather() { return this->weather; };

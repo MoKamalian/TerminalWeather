@@ -16,7 +16,7 @@ using namespace curlpp;
 using namespace nlohmann;
 
 int main() {
-
+    /* model testing
     WeatherModel model;
     model.fetchWeatherData();
     cout << model.getWeather().getMain() << endl;
@@ -28,7 +28,14 @@ int main() {
 
 
     cout << model.getCity() << endl;
-    cout << model.getCountry() << endl;
+    cout << model.getCountry() << endl;*/
+
+    /* controller testing */
+    string Boston = "Boston";
+    string badCity = "02983";
+    cout << WeatherController::validateCity(Boston) << endl;
+    cout << WeatherController::validateCity(badCity) << endl;
+
 
     return 0;
 }
@@ -36,9 +43,8 @@ int main() {
 
 
 // TODO: create the model class that will actually perform the API calls
-    // TODO: methods needed to process the data received from the API call
-    // TODO: methods also need to actually make those API calls
-    // TODO: the actual weather object will be instantiated inside the fetch method call
     // TODO: should change the URL so the city name is not hard coded
-    // TODO: initialize the weather member variable with the correct weather data belozw
+    // TODO: controller need to validate input does not contain symbols, only letters
+    // TODO: will need to create implementation to display the weather data
+    // TODO: have the weather model accept the city name to make the API call
 

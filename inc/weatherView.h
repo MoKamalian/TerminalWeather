@@ -19,6 +19,9 @@
 class WeatherView {
 
 public:
+    /* displays the weather information to the user */
+    static void displayWeather(const std::string& w);
+
     /* methods for displaying UI ASCII art of depending on the weather */
     static void displaySun();
     static void displayRain();
