@@ -14,8 +14,8 @@
 #include "../lib/curlpp/Options.hpp"
 
 /* this is the API key that will be used to make the requests;
- * replace with your specific key */
-#define MY_URL(string) (("https://api.openweathermap.org/data/2.5/weather?q=") + (string) + ("&appid={YOUR_API_KEY}"))
+ * replace with your specific key */                                                        /* PUT YOUR KEY HERE */
+#define MY_URL(string) (("https://api.openweathermap.org/data/2.5/weather?q=") + (string) + ("&appid={YOUR_API_KEY"))
 #define KELVIN_CONST 273.15
 /* main weather model class
  *      - this is where processing of data will occur

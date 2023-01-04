@@ -9,6 +9,7 @@
 
 #include <iostream>
 #include <regex>
+#include <iomanip>
 #include "weatherModel.h"
 #include "weatherView.h"
 
@@ -41,6 +42,9 @@ public:
     /* displays the weather data and the associated ascii art
      * for the particular type of weather */
     static void displayFullWeather(const std::string& city, void (*display)());
+
+    /* getters */
+    static WeatherModel& getWeatherModel() { return model; };
 
 };
 

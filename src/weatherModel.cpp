@@ -22,6 +22,7 @@ bool WeatherModel::fetchWeatherData(std::string& _city) {
         /* os is the object the data response will be sent to */
         Options::WriteStream ws(&os);
         myRequest.setOpt<options::Url>(MY_URL(_city));
+        // std::cout << MY_URL(_city) << std::endl; --> uncomment for testing to see what final URL result looks like
         myRequest.setOpt(ws);
         myRequest.perform();
         /* actual parsing of the json response; the data is extracted via
